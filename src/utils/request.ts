@@ -2,7 +2,7 @@
  * @Author: Terryzh
  * @Date: 2019-08-10 18:42:50
  * @LastEditors: yangdan
- * @LastEditTime: 2019-09-23 11:44:05
+ * @LastEditTime: 2019-09-23 14:52:38
  * @Description: 添加描述
  */
 /**
@@ -59,9 +59,9 @@ const request = extend({
   // mode: 'no-cors',
   credentials: 'include',
   // 官网打包
-  // prefix: 'http://audit.fantudl.com:80/api',
+  prefix: 'http://audit.fantudl.com:80/api',
   // 本地运行
-  prefix: '/api',
+  // prefix: '/api',
 });
 
 // ?处理登录前后header的拦截器
@@ -85,11 +85,17 @@ request.interceptors.request.use((url, options) => {
 request.interceptors.response.use(async (response, options) => {
   // 获取后端返回msg和code
   const { code, msg } = await response.clone().json();
+  console.log('msg', msg)
   if (response.status === 200) {
     if (code === 200 && !/query|get/g.test(response.url)) message.success(msg);
     else if (typeof code === 'number' && code.toString().length >= 4) message.warning(msg);
     else if (typeof code === 'number' && code === 401) message.warning(msg);
+    else if (typeof code === 'number' && code === 403) {
+      message.error("Token 失效,将在2秒后跳转到登录页面");
+      setTimeout(()=>{router.replace('/user/login')},2*1000)
+    }
   } else message.error(msg);
+
   return response;
 });
 

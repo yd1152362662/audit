@@ -2,7 +2,7 @@
  * @Author: yangdan
  * @Date: 2019-09-06 16:47:23
  * @LastEditors: yangdan
- * @LastEditTime: 2019-09-23 10:41:32
+ * @LastEditTime: 2019-09-23 14:53:59
  * @Description: 添加描述
  */
 import { Subscription } from 'dva';
@@ -45,7 +45,7 @@ const GlobalModel: GlobalModelType = {
   state: {
     collapsed: false,
     notices: [],
-    url:"http://172.16.9.34:8000"
+    url:"http://audit.fantudl.com:80"
   },
 
   effects: {
