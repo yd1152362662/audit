@@ -1,0 +1,104 @@
+@import '~antd/es/style/themes/default.less';
+@import './utils/utils.less';
+
+.tableList {
+  .tableListOperator {
+    margin-bottom: 16px;
+    button {
+      margin-right: 8px;
+    }
+  }
+}
+
+.tableListForm {
+  :global {
+    .ant-form-item {
+      display: flex;
+      margin-right: 0;
+      margin-bottom: 24px;
+      > .ant-form-item-label {
+        width: auto;
+        padding-right: 8px;
+        line-height: 32px;
+      }
+      .ant-form-item-control {
+        line-height: 32px;
+      }
+    }
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+  .submitButtons {
+    display: block;
+    margin-bottom: 24px;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: @screen-lg) {
+  .tableListForm :global(.ant-form-item) {
+    margin-right: 24px;
+  }
+}
+
+@media screen and (max-width: @screen-md) {
+  .tableListForm :global(.ant-form-item) {
+    margin-right: 8px;
+  }
+}
+// 弹框的样式
+.userModal {
+  width:1200px;
+  height: 800px;
+  background-color: red
+}
+
+//  审核图片样式
+.card {
+  .cardDiv {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+  .cardAvatar {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+.detailAudit {
+  display: flex;
+  p {
+    margin-block-start:0;
+    margin-block-end: 0;
+    font-weight: bold;
+  }
+  .detailAuditP {
+    padding-left: 20px;
+  }
+}
+
+.scrollBox::-webkit-scrollbar
+{
+    width: 8px;
+    background-color: #F5F5F5;
+}
+.scrollBox::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+.scrollBox::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    height: 10px !important;
+    -webkit-box-shadow: inset 0 0 6px rgba(90, 90, 90, 0.3);
+    background-color: #0015295c;
+}
