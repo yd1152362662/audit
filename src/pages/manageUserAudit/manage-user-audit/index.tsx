@@ -199,7 +199,8 @@ class TableList extends Component<TableListProps, TableListState> {
       phone: form.getFieldValue('phone'),
       idNumber: form.getFieldValue('idNumber'),
       auditState: form.getFieldValue('auditState'),
-      userType:form.getFieldValue('userType'),
+      userType: form.getFieldValue('userType'),
+      idCardIsNull:form.getFieldValue('idCardIsNull'),
     };
     const pagenation: Partial<PaginationUserAuditParams> = {
       current: pagination.current,
@@ -241,7 +242,8 @@ class TableList extends Component<TableListProps, TableListState> {
         phone: form.getFieldValue('phone'),
         idNumber: form.getFieldValue('idNumber'),
         auditState: form.getFieldValue('auditState'),
-        userType:form.getFieldValue('userType'),
+        userType: form.getFieldValue('userType'),
+        idCardIsNull:form.getFieldValue('idCardIsNull'),
       },
     });
     dispatch({
@@ -344,6 +346,18 @@ class TableList extends Component<TableListProps, TableListState> {
                   {
                     text.map((params, idx) => <Option key={params} value={idx}>{params}</Option>)
                   }
+                </Select>,
+              )}
+            </FormItem>
+          </Col>
+
+          <Col md={8} sm={24}>
+            <FormItem label="身份证状态">
+              {getFieldDecorator('idCardIsNull')(
+                <Select placeholder="身份证状态" allowClear style={{ width: '100%' }}>
+                  <Option value={null}>全部</Option>
+                  <Option value={1}>不为空</Option>
+                  <Option value={2}>为空</Option>
                 </Select>,
               )}
             </FormItem>

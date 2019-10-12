@@ -2,14 +2,14 @@
  * @Author: Terryzh
  * @Date: 2019-08-10 18:42:50
  * @LastEditors: yangdan
- * @LastEditTime: 2019-09-23 10:49:58
+ * @LastEditTime: 2019-10-12 17:25:00
  * @Description: 添加描述
  */
 import { Reducer } from 'redux';
 import { Effect } from 'dva';
 import { router } from 'umi';
 import { accountLoginRule ,accountLoginCode } from './service';
-
+import { message } from 'antd';
 export interface UserStateType {
   status?: 'ok' | 'error';
   type?: string;
@@ -48,11 +48,9 @@ const UserModel: UserModelType = {
         // TODO 页面跳转
         router.replace('/');
       }
-
-      // yield put({
-      //   type: 'changeLoginStatus',
-      //   payload: response,
-      // });
+      else {
+        message.error(response.message);
+      }
     },
     *code(_,{call}){
       const response = yield call(accountLoginCode);

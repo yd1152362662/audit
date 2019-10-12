@@ -2,7 +2,7 @@
  * @Author: Terryzh
  * @Date: 2019-08-12 10:35:26
  * @LastEditors: yangdan
- * @LastEditTime: 2019-09-23 10:42:02
+ * @LastEditTime: 2019-10-11 17:26:54
  * @Description: 配置文件
  */
 import { IConfig, IPlugin } from 'umi-types';
@@ -120,7 +120,7 @@ export default {
   chainWebpack: webpackPlugin,
   proxy: {
     '/api': {
-      target: 'http://172.16.9.34:8000',
+      target: 'http://172.16.9.170:8000',
       changeOrigin: true,
       // pathRewrite: {
       //   '^/v2': '',

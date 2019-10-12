@@ -2,7 +2,7 @@
  * @Author: yangdan
  * @Date: 2019-09-16 10:04:38
  * @LastEditors: yangdan
- * @LastEditTime: 2019-09-16 10:04:38
+ * @LastEditTime: 2019-10-11 17:45:16
  * @Description: 添加描述
  */
 export interface TableListItem {
@@ -86,4 +86,5 @@ export interface PaginationUserAuditParams {
   current: number;
   size: number;
   userType:number;
+  idCardIsNull:string|null;
 }
