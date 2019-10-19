@@ -43,6 +43,7 @@ const AduitCarForm: React.FunctionComponent<EditorFormProps> = props => {
   const [auditStateText, setAuditStateText] = useState('');
   const [auditStatecolor, setAuditStatecolor] = useState('');
   const [userLoading, setUserLoading] = useState(true);
+  const [displayButton, setDisplayButton] = useState('block');
   const [children] = useState([
     <Option key="行驶证首页模糊不清，请重新拍照上传">行驶证首页模糊不清，请重新拍照上传</Option>,
     <Option key="行驶证副业模糊不清，请重新拍照上传">行驶证副业模糊不清，请重新拍照上传</Option>,
@@ -63,6 +64,7 @@ const AduitCarForm: React.FunctionComponent<EditorFormProps> = props => {
           setAuditStatecolor('green');
           setAuditStateText('验证成功');
           setStateAudit(true)
+          setDisplayButton('none')
           break;
         case 3:
           setAuditStatecolor('red');
@@ -105,6 +107,7 @@ const AduitCarForm: React.FunctionComponent<EditorFormProps> = props => {
       setPictureData([]);
       setStateAudit(false);
       setUserLoading(true)
+      setDisplayButton('block')
     }
   }, [modalVisible]);
 
@@ -197,6 +200,7 @@ const AduitCarForm: React.FunctionComponent<EditorFormProps> = props => {
 
   return (
     <Modal
+      className="displayButton"
       destroyOnClose
       width="70%"
       style={{ top: 60 }}
@@ -216,6 +220,7 @@ const AduitCarForm: React.FunctionComponent<EditorFormProps> = props => {
               setAuditModalVisible(true);
             }}
             disabled={stateAudit}
+            style={{ display: displayButton }}
           >
             审核驳回
           </Button>
@@ -242,7 +247,7 @@ const AduitCarForm: React.FunctionComponent<EditorFormProps> = props => {
           okText="确认"
           cancelText="返回"
         >
-          <Button key="back" type="primary" size="small" disabled={stateAudit}>
+          <Button key="back" type="primary" size="small" disabled={stateAudit} style={{ display: displayButton }}>
             审核通过
           </Button>
         </Popconfirm>,
@@ -311,7 +316,7 @@ const AduitCarForm: React.FunctionComponent<EditorFormProps> = props => {
                           <Empty
                             image={emptyPicture}
                             imageStyle={{
-                              width:'100%',
+                              width: '100%',
                               height: '10vh',
                             }}
                           >
